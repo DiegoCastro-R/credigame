@@ -5770,6 +5770,11 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-elevate@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-elevate/-/react-native-elevate-1.0.7.tgz#02943d92f8c6a6a4ea0d08e024e928b8965500d9"
+  integrity sha512-2lB3lWj5sMjKSNMvx4zxGnF2mouUNrVGMEH6927uVwsn5eVPhntoBBF01K9ZEbauP1vEsbKrwhHwncXVHBbsIw==
+
 react-native-gesture-handler@~1.10.2:
   version "1.10.3"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz#942bbf2963bbf49fa79593600ee9d7b5dab3cfc0"

@@ -55,11 +55,22 @@ const AuthNavigator = () => (
       name="Home"
       component={screens.HomeView}
     ></Stack.Screen>
+      <Stack.Screen
+      options={{
+        title: "1/10",
+        headerTitleStyle: { color: "#FFF" },
+        headerStyle: { backgroundColor: "#3953A2" },
+        headerShown: true,
+      }}
+      name="Quiz"
+      component={screens.Quiz}
+    ></Stack.Screen>
   </Stack.Navigator>
 );
 
 export default function Routes() {
   const { signed } = useAuth();
 
-  return signed ? <AuthNavigator /> : <LoginNavigator />;
+  // return signed ? <AuthNavigator /> : <LoginNavigator />;
+  return <AuthNavigator />;
 }
