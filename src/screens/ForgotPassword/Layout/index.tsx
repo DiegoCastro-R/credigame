@@ -13,7 +13,7 @@ export default function ForgortPassword({
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPassword, setShowPassword] = React.useState<boolean>(true);
-  console.log(showPassword);
+
   return (
     <React.Fragment>
       <C.Container>

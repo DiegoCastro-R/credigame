@@ -10,3 +10,9 @@ export const Container = styled.View`
 export const Text = styled.Text``;
 
 export const Button = styled(IconButton);
+
+export const logoutBtn = styled(Button)`
+  color: #334b99;
+  text-align: center;
+  width: 220px;
+`;

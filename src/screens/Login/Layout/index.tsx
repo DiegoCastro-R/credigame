@@ -8,6 +8,7 @@ import { ILoginLayout } from "../data";
 export default function Login({
   navigateToForgotPass,
   navigateToRegister,
+  handleSingleIn,
 }: ILoginLayout) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -49,6 +50,7 @@ export default function Login({
         color="#334b99"
         style={{ width: 320, marginBottom: 4 }}
         mode="contained"
+        onPress={() => handleSingleIn(email, password)}
       >
         ENTRAR
       </Button>

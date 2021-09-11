@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import * as screens from "../../../screens";
 import * as C from "./styles";
 
@@ -29,7 +30,6 @@ function RankingView({ navigation }) {
 function ProfileView({ navigation }) {
   return (
     <C.Container>
-      {/* <C.Button icon="home" onPress={() => navigation.navigate("Home")} /> */}
       <C.Text>Perfil</C.Text>
     </C.Container>
   );
@@ -86,7 +86,7 @@ export default function TabNavigator() {
           headerStyle: { backgroundColor: "#3953A2" },
           headerShown: true,
         }}
-        component={ProfileView}
+        component={screens.ProfileView}
       ></Tab.Screen>
     </Tab.Navigator>
   );

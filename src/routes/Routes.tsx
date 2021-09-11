@@ -1,8 +1,12 @@
 import * as React from "react";
+import { useContext } from "react";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import * as screens from "../screens";
 import { TabNavigator } from "../components";
+
+import { useAuth } from "../contexts/auth";
+
 const Stack = createStackNavigator();
 
 const LoginNavigator = () => (
@@ -55,5 +59,7 @@ const AuthNavigator = () => (
 );
 
 export default function Routes() {
-  return <AuthNavigator />;
+  const { signed } = useAuth();
+
+  return signed ? <AuthNavigator /> : <LoginNavigator />;
 }
