@@ -35,7 +35,7 @@ const Quiz: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalData, setModalData] = useState<any>({
     isCorrect: false,
-    justification: "",
+    // justification: "",
     finished: false,
   });
   // const { token, user } = useAuth();
@@ -92,7 +92,7 @@ const Quiz: React.FC = () => {
     // console.log('showJustification quiz called');
     setModalData({
       isCorrect: answer.correct,
-      justification: question.justification,
+      // justification: question.justification,
       finished: false,
     });
     setModalVisible(true);
@@ -110,6 +110,8 @@ const Quiz: React.FC = () => {
     // console.log("finishQuiz called");
     try {
       setModalVisible(false);
+      navigation.navigate("Home");
+
       // if (!user || !user.id) {
       //   setModalVisible(false);
       //   navigation.navigate("Home");
@@ -222,7 +224,22 @@ const Quiz: React.FC = () => {
           </>
         ) : null}
       </View>
-      <View
+      <Text
+        style={{
+          // width: "100%",
+          alignSelf: "center",
+          padding: 20,
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 14,
+          color: "#334B99",
+        }}
+        onPress={() => finishQuiz(score)}
+      >
+        DESISTIR
+      </Text>
+
+      {/* <View
         style={{
           padding: 20,
           backgroundColor: "#EDC951",
@@ -254,20 +271,23 @@ const Quiz: React.FC = () => {
             />
           )}
         </TouchableWithoutFeedback>
-      </View>
+      </View> */}
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <View style={styles.centeredView}>
           {!modalData.finished ? (
           <View style={styles.modalView}>
             <Text style={styles.modalText}>
-              Resposta {modalData.isCorrect ? "correta!" : "incorreta!"}
+              Você {modalData.isCorrect ? "acertou!!!" : "errou!!!"}
             </Text>
-            <Text style={styles.modalText}>{modalData.justification}</Text>
+            {/* <Text style={styles.modalText}>{modalData.justification}</Text> */}
+            <Text style={styles.modalText}>
+              {modalData.isCorrect ? "Parabéns," : "Acontece!"} deseja passar para a próxima pergunta?
+            </Text>
             <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: "#EDC951" }}
+              style={{ ...styles.openButton, backgroundColor: "#334B99" }}
               onPress={nextQuestion}
             >
-              <Text style={styles.textStyle}>Continuar</Text>
+              <Text style={styles.textStyle}>PRÓXIMA</Text>
             </TouchableHighlight>
           </View>
         ) :
@@ -279,7 +299,7 @@ const Quiz: React.FC = () => {
             Pontuação total: {score}
           </Text>
           <TouchableHighlight
-            style={{ ...styles.openButton, backgroundColor: "#EDC951" }}
+            style={{ ...styles.openButton, backgroundColor: "#334B99" }}
             onPress={() => finishQuiz(score)}
           >
             <Text style={styles.textStyle}>Terminar</Text>
@@ -297,36 +317,43 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    // marginTop: 22,
   },
   modalView: {
-    margin: 20,
+    width: "70%",
     backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
+    // borderRadius: 20,
+    // padding: 35,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowOpacity: 0.75,
+    shadowRadius: 4.84,
     elevation: 5,
   },
   openButton: {
-    backgroundColor: "#F194FF",
-    borderRadius: 20,
+    alignContent: "flex-end",
+    alignSelf: "flex-end",
+    backgroundColor: "#334B99",
+    marginTop: 18,
+    margin: 12,
+    borderRadius: 4,
     padding: 10,
-    elevation: 2,
+    // elevation: 2,
   },
   textStyle: {
     color: "white",
     fontWeight: "bold",
-    textAlign: "center",
+    textAlign: "center"
   },
   modalText: {
-    marginBottom: 15,
+    width: "84%",
+    marginTop: 24,
+    // marginBottom: 15,
+    fontSize: 16,
     textAlign: "center",
   },
 });

@@ -20,9 +20,9 @@ export default function Answers({
       style={{
         flexDirection: "column",
         alignItems: "center",
-        paddingTop: 14,
+        // paddingTop: 40,
         paddingHorizontal: 24.5,
-        marginTop: 30,
+        marginTop: 50,
       }}
     >
       {answers.map((answer, key) => (
