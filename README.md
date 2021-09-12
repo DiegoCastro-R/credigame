@@ -1,7 +1,7 @@
 <h1> Credi Game </h1>
 
 <p align="center">
-<img width="200" height="auto" src=""/> 
+<img width="200" height="auto" src="https://d1wp6m56sqw74a.cloudfront.net/~assets/20e391a70cdc8e828ad8a3708a190409"/> 
  </p>
 <h6> O Credigame é um aplicativo inovador para smartphones em que, ao se cadastrar e fazer o login, o usuário tem acesso a um jogo com perguntas e respostas sobre educação financeira, podendo interagir inclusive com amigos. </h6>
 
@@ -36,7 +36,7 @@ Através do ensino divertido e de fácil acesso, da maior agilidade na identific
 ## Executar Aplicativo no Expo (iOS / Android)
 
 <p align="center">
-<img width="200" height="auto" src=""/> 
+<img width="200" height="auto" src="![image](https://user-images.githubusercontent.com/61213894/133006697-6f541650-ac67-41bf-b5c7-3d5a90124e59.png)"/> 
  </p>
 
 ## Baixar Aplicativo (APK - Android)
