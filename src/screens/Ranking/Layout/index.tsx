@@ -15,7 +15,7 @@ export default function Ranking() {
           }}
         ></C.ProfileAvatar>
 
-        <C.Text>Olá, {user}</C.Text>
+        <C.Text>Olá, {user?.name}</C.Text>
         <C.logoutBtn onPress={signOut} mode="contained">
           logout
         </C.logoutBtn>
