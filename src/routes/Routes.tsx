@@ -55,7 +55,7 @@ const AuthNavigator = () => (
       name="Home"
       component={screens.HomeView}
     ></Stack.Screen>
-      <Stack.Screen
+    <Stack.Screen
       options={{
         title: "1/10",
         headerTitleStyle: { color: "#FFF" },
@@ -71,6 +71,6 @@ const AuthNavigator = () => (
 export default function Routes() {
   const { signed } = useAuth();
 
-  // return signed ? <AuthNavigator /> : <LoginNavigator />;
-  return <AuthNavigator />;
+  return signed ? <AuthNavigator /> : <LoginNavigator />;
+  //return <AuthNavigator />;
 }

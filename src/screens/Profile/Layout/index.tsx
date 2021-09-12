@@ -14,7 +14,8 @@ export default function Profile() {
             url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKJlkQw-QQbXZ_B2H8FiN42DpiOzNqDi4Rrw&usqp=CAU",
           }}
         ></C.ProfileAvatar>
-        <C.Text>Olá, {user?.name}</C.Text>
+
+        <C.Text>Olá, {user}</C.Text>
         <C.logoutBtn onPress={signOut} mode="contained">
           logout
         </C.logoutBtn>
