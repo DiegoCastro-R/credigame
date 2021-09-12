@@ -107,10 +107,10 @@ const Quiz: React.FC = () => {
   };
 
   const finishQuiz = useCallback(async (score) => {
-    // console.log("finishQuiz called");
+    console.log("finishQuiz called");
     try {
       setModalVisible(false);
-      navigation.navigate("Home");
+      navigation.navigate({name: "Home"} as any);
 
       // if (!user || !user.id) {
       //   setModalVisible(false);
@@ -173,6 +173,12 @@ const Quiz: React.FC = () => {
         backgroundColor: "#F2F2F2",
       }}
     >
+      {gameOver &&
+        <View>
+
+        </View>
+      }
+
       <View style={{ flex: 1 }}>
         <View
           style={{
@@ -182,14 +188,15 @@ const Quiz: React.FC = () => {
           }}
         >
           {/* <Text style={{ fontSize: 16, color: "#FFF" }}>Pontos: {score}</Text> */}
-          {/* <Text
+          <Text
             style={{
               fontSize: 16,
-              color: "#EDC951",
+              paddingHorizontal: 24.5,
+              color: "#000000",
             }}
           >
             {number + 1}/10
-          </Text> */}
+          </Text>
         </View>
 
         <View style={{ marginVertical: 2 }}></View>

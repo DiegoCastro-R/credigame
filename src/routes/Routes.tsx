@@ -57,7 +57,7 @@ const AuthNavigator = () => (
     ></Stack.Screen>
       <Stack.Screen
       options={{
-        title: "1/10",
+        title: "Quiz",
         headerTitleStyle: { color: "#FFF" },
         headerStyle: { backgroundColor: "#3953A2" },
         headerShown: true,
