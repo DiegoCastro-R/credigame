@@ -60,18 +60,18 @@ const AuthProvider: React.FC = ({ children }) => {
           });
         }
       }
-      console.log(response);
+      console.log("signin response:", response);
       //@ts-ignore
-      setUser(response.data);
+      setUser(response.user);
       //@ts-ignore
-      api.defaults.headers.Authorization = `Baerer ${response.data.token}`;
+      api.defaults.headers.Authorization = `Baerer ${response.token}`;
 
       await AsyncStorage.setItem(
         "@CrediGameAuth:user", //@ts-ignore
-        JSON.stringify(response.data.User)
+        JSON.stringify(response.user)
       );
       //@ts-ignore
-      await AsyncStorage.setItem("@CrediGameAuth:token", response.data.token);
+      await AsyncStorage.setItem("@CrediGameAuth:token", response.token);
     });
   }
 
