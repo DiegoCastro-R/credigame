@@ -67,7 +67,7 @@ export default function TabNavigator() {
           headerStyle: { backgroundColor: "#3953A2" },
           headerShown: true,
         }}
-        component={RankingView}
+        component={screens.Ranking}
       ></Tab.Screen>
       <Tab.Screen
         name="Profile"
