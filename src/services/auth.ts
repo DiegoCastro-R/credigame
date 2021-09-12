@@ -11,7 +11,6 @@ interface Response {
 export async function signIn(email: string, password): Promise<Response> {
   const data = { email, password };
   return await api.post("/users/auth", data).then((res) => {
-    console.log(res.data);
     return res.data;
   });
 }

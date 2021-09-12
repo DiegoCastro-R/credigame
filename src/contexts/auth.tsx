@@ -1,6 +1,9 @@
 import * as React from "react";
 import { useContext } from "react";
 import { createContext, useState, useEffect } from "react";
+
+import Toast from "react-native-toast-message";
+
 import * as auth from "../services/auth";
 import api from "../services/api";
 
@@ -40,15 +43,36 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   async function signIn(email: string, password: string) {
-    const response = await auth.signIn(email, password);
-    setUser(response.user);
-    api.defaults.headers.Authorization = `Baerer ${response.token}`;
+    await auth.signIn(email, password).then(async (response) => {
+      //@ts-ignore
+      if (!response.success) {
+        //@ts-ignore
+        if (response.message === "User Email/Password does not match.") {
+          Toast.show({
+            type: "error",
+            text1:
+              "Erro ao validar email/senha, verifique os dados e tente novamente",
+          });
+        } else {
+          Toast.show({
+            type: "error",
+            text1: "Error, tente novamente mais tarde.",
+          });
+        }
+      }
+      console.log(response);
+      //@ts-ignore
+      setUser(response.data);
+      //@ts-ignore
+      api.defaults.headers.Authorization = `Baerer ${response.data.token}`;
 
-    await AsyncStorage.setItem(
-      "@CrediGameAuth:user",
-      JSON.stringify(response.user)
-    );
-    await AsyncStorage.setItem("@CrediGameAuth:token", response.token);
+      await AsyncStorage.setItem(
+        "@CrediGameAuth:user", //@ts-ignore
+        JSON.stringify(response.data.User)
+      );
+      //@ts-ignore
+      await AsyncStorage.setItem("@CrediGameAuth:token", response.data.token);
+    });
   }
 
   async function signOut() {
