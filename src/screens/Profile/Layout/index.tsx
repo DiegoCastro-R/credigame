@@ -5,7 +5,7 @@ import * as C from "./styles";
 import backgroundVector from "../../../assets/bg.png";
 export default function Profile() {
   const { user, signOut } = useAuth();
-  console.log(user);
+  // console.log(user);
   return (
     <C.Container>
       <C.Background resizeMode="cover" source={backgroundVector}>
