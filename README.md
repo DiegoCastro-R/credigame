@@ -37,5 +37,7 @@ Através do ensino divertido e de fácil acesso, da maior agilidade na identific
 
 <p align="center">
 <img width="200" height="auto" src="https://user-images.githubusercontent.com/61213894/133006697-6f541650-ac67-41bf-b5c7-3d5a90124e59.png"/> 
- </p>
+<p align="center">https://expo.dev/@diegocrodrigues/credigame</p> 
+</p>
+ 
 
