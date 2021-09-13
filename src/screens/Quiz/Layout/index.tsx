@@ -11,7 +11,9 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 import Questions from "../../../components/Questions";
 import Answers from "../../../components/Answers";
+import { useAuth } from "../../../contexts/auth";
 import { getQuizQuestions, QuestionsState } from "../../../utils/utils";
+import api from "../../../services/api";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 // import api from "../../utils/api";
 // import { useAuth } from "../../hooks/auth";
@@ -38,12 +40,12 @@ const Quiz: React.FC = () => {
     // justification: "",
     finished: false,
   });
-  // const { token, user } = useAuth();
   const navigation = useNavigation();
   const setAnswer = useRef(null);
+  const { user } = useAuth();
 
   const startQuiz = async () => {
-    // console.log('star quiz called');
+    console.log('start quiz called. user:', user?.name);
     setLoading(true);
     setGameOver(false);
 
@@ -62,12 +64,12 @@ const Quiz: React.FC = () => {
   };
 
   useEffect(() => {
-    // console.log('useEffect quiz called');
+    console.log('useEffect quiz called');
     startQuiz();
   }, []);
 
   const checkAnswer = () => {
-    // console.log('checkAnswer quiz called');
+    console.log('checkAnswer quiz called');
     const answer = setAnswer.current;
     const correct = questions[number].correct_answer === answer;
 
@@ -89,7 +91,7 @@ const Quiz: React.FC = () => {
   };
 
   const showJustification = (question: any, answer: any) => {
-    // console.log('showJustification quiz called');
+    console.log('showJustification quiz called');
     setModalData({
       isCorrect: answer.correct,
       // justification: question.justification,
@@ -99,11 +101,31 @@ const Quiz: React.FC = () => {
   };
 
   const showFinizQuizModal = () => {
-    // console.log('showFinizQuizModal quiz called');
+    console.log('showFinizQuizModal quiz called');
     setModalData({
       finished: true,
     });
     setModalVisible(true);
+  };
+
+  const sendScore = async () => {
+    console.log('sendScore called! score:', score);
+
+    const bodyParameters = {
+      score: score
+    };
+
+    try {
+      api.post("/users/update-score", bodyParameters).then((res) => {
+        const data = res.data;
+        console.log('resposta score update:', data);
+        if (data.success) {
+          console.log('pontuação enviada com sucesso');
+        }
+      });
+    } catch(ex) {
+      console.log('erro postando score:', ex);
+    }
   };
 
   const finishQuiz = useCallback(async (score) => {
@@ -121,21 +143,21 @@ const Quiz: React.FC = () => {
       //   headers: { Authorization: `Bearer ${token}` },
       // };
       // const bodyParameters = {
-      //   id: user.id,
-      //   pontuation: score,
+      //   score: score
       // };
 
-      // api.patch("profile/", bodyParameters, config)
-      // .then(function (response) {
-      //   // console.log('api return:', response);
-      //   setModalVisible(false);
-      //   // navigation.navigate("Home");
-      // })
-      // .catch(function (error) {
-      //   console.log('error calling api:', error);
-      //   setModalVisible(false);
-      //   // navigation.navigate("Home");
-      // })
+      // api.post("/update-score", bodyParameters).then((res) => {
+      //   const data = res.data;
+      //   console.log('resposta score update:', data);
+      //   if (data.success) {
+      //     console.log('pontuação enviada com sucesso');
+      //     // Toast.show({
+      //     //   type: "success",
+      //     //   text1: "Cadastro realizado com sucesso!",
+      //     // });
+      //     // navigation.goBack();
+      //   }
+      // });
     } catch (ex) {
       console.log("Could not patch user profile.", ex);
       setModalVisible(false);
@@ -157,6 +179,7 @@ const Quiz: React.FC = () => {
       } else {
         setGameOver(true);
         showFinizQuizModal();
+        sendScore();
       }
     } catch (ex) {
       console.log("error on nextQuestion called", ex);
@@ -175,7 +198,14 @@ const Quiz: React.FC = () => {
     >
       {gameOver &&
         <View>
-
+          <View>
+            <Text>
+              Parabéns {user?.name}!
+            </Text>
+            <Text>
+              Seu total de pontos era de: {0}
+            </Text>
+          </View>
         </View>
       }
 
@@ -195,7 +225,7 @@ const Quiz: React.FC = () => {
               color: "#000000",
             }}
           >
-            {number + 1}/10
+            {number + 1}/{TOTAL_QUESTIONS}
           </Text>
         </View>
 
